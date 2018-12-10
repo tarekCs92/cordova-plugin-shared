@@ -173,10 +173,11 @@
             [itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler: ^(NSURL* item, NSError *error) {
                 --remainingAttachments;
                 [self debug:[NSString stringWithFormat:@"public.url = %@", item]];
+                NSData *data = [NSData dataWithContentsOfURL:(NSURL*)item];
+                NSString *base64 = [data convertToBase64];
                 NSString *uti = @"public.url";
                 NSDictionary *dict = @{
-
-                                           @"data" : item.absoluteString,
+                                           @"data" : base64,
                                            @"uti": uti,
                                            @"utis": itemProvider.registeredTypeIdentifiers,
                                            @"name": @"",
