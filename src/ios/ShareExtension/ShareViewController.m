@@ -19,7 +19,7 @@
 // all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDINviewDidAppearG BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
@@ -169,11 +169,11 @@
             [itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler: ^(NSURL* item, NSError *error) {
                 --remainingAttachments;
                 [self debug:[NSString stringWithFormat:@"public.url = %@", item]];
-                NSData *data = [NSData dataWithContentsOfURL:(NSURL*)item];
-                NSString *base64 = [data convertToBase64];
+               // NSData *data = [NSData dataWithContentsOfURL:(NSURL*)item];
+               // NSString *base64 = [data convertToBase64];
                 NSString *uti = @"public.url";
                 NSDictionary *dict = @{
-                                           @"data" : base64,
+                                           @"data" : item.absoluteString, //base64,
                                            @"uti": uti,
                                            @"utis": itemProvider.registeredTypeIdentifiers,
                                            @"name": @"",
