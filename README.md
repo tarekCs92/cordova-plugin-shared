@@ -1,4 +1,4 @@
-# cordova-plugin-openwith
+# cordova-plugin-openwith-url
 
 > This plugin for [Apache Cordova](https://cordova.apache.org/) registers your app to handle certain types of files.
 
