@@ -47,6 +47,13 @@ SOFTWARE.
       <clobbers target="cordova.openwith" />
     </js-module>
 
+    <!-- IMPORTANT: 
+    iosPostProcessTarget reset PRODUCT_BUNDLE_IDENTIFIER to app_id+.sharedextension for the share extension. It has to be done after
+    "prepare" phase because prepare.js in cordova-ios globally sets PRODUCT_BUNDLE_IDENTIFIER to that of the root project.
+    -->
+    <hook type="after_prepare" src="hooks/iosPostProcessTarget.js" />
+
+
     <!-- Cordova 2.2 -->
     <plugins-plist key="OpenWith" string="OpenWith" />
 
@@ -58,6 +65,7 @@ SOFTWARE.
       </feature>
     </config-file>
 
+    <header-file src="src/ios/ShareExtension/ShareViewController.h" />
     <source-file src="src/ios/OpenWithPlugin.m" />
 
     <!-- Info.plist -->
@@ -100,22 +108,30 @@ SOFTWARE.
 
   <!-- android -->
   <platform name="android">
-    <preference name="ANDROID_MIME_TYPES" />
+    <preference name="ANDROID_MIME_TYPES" value="text/*" />
+    <!-- <preference name="AndroidLaunchMode" value="singleTask" /> -->
 
     <js-module src="www/openwith.js" name="openwith">
       <clobbers target="cordova.openwith" />
     </js-module>
 
+    <!-- <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
+    <activity android:launchMode = "singleTask" />
+</edit-config> -->
+
+    <!-- <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='MainActivity']" mode="merge">
+    <activity android:name="MainActivity" android:launchMode = "singleTask" />
+</edit-config> -->
+
     <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
       <intent-filter>
-        <!-- See https://developer.android.com/guide/topics/manifest/data-element.html -->
-        $ANDROID_MIME_TYPES
+        <data android:mimeType="$ANDROID_MIME_TYPES" />
         <action android:name="android.intent.action.SEND" />
-        <action android:name="android.intent.action.SEND_MULTIPLE" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
       </intent-filter>
     </config-file>
+
 
     <!-- Cordova >= 3.0.0 -->
     <config-file target="res/xml/config.xml" parent="/*">

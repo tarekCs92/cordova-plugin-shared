@@ -172,12 +172,16 @@ module.exports = function (context) {
 
       // Remove source files to our PbxGroup and our newly created PBXSourcesBuildPhase
       files.source.forEach(function(file) {
+        if (target){
         pbxProject.removeSourceFile(file.name, {target: target.uuid}, pbxGroupKey);
+        }
       });
 
       //  Remove the resource file and include it into the targest PbxResourcesBuildPhase and PbxGroup
       files.resource.forEach(function(file) {
+        if (target){
         pbxProject.removeResourceFile(file.name, {target: target.uuid}, pbxGroupKey);
+        }
       });
     }
 
