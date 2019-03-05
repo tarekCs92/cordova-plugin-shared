@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-openwith",
-  "version": "1.0.3",
-  "description": "Cordova \"Open With\" plugin for iOS and Android",
+  "name": "cordova-plugin-shared",
+  "version": "1.0.0",
+  "description": "Cordova \"Shared\" plugin for iOS and Android",
   "cordova": {
-    "id": "cordova-plugin-openwith",
+    "id": "cordova-plugin-shared",
     "platforms": [
       "android",
       "ios"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ygyg70/cordova-plugin-openwith.git"
+    "url": "git+https://github.com/sandyclock/cordova-plugin-shared.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -32,12 +32,12 @@
     "js-lint-watch": "esw --watch www",
     "js-test-watch": "mocha --watch www"
   },
-  "author": "Jean-Christophe Hoelt <hoelt@fovea.cc>",
+  "author": "Li Tan <tanli_stonybrook@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ygyg70/cordova-plugin-openwith/issues"
+    "url": "https://github.com/sandyclock/cordova-plugin-shared/issues"
   },
-  "homepage": "https://github.com/ygyg70/cordova-plugin-openwith",
+  "homepage": "https://github.com/sandyclock/cordova-plugin-shared",
   "# Dependencies required by the hooks": "",
   "dependencies": {
     "file-system": "^2.2.2",
@@ -76,6 +76,7 @@
     "hooks/iosAddTarget.js",
     "hooks/iosRemoveTarget.js",
     "hooks/iosCopyShareExtension.js",
+    "hooks/iosPostProcessTarget.js",
     "hooks/npmInstall.js",
     "install-pmd",
     "plugin.xml",

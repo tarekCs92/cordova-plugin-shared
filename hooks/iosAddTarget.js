@@ -29,7 +29,7 @@
 // THE SOFTWARE.
 //
 
-const PLUGIN_ID = 'cordova-plugin-openwith';
+const PLUGIN_ID = 'cordova-plugin-shared';
 const BUNDLE_SUFFIX = '.shareextension';
 
 var fs = require('fs');
@@ -351,7 +351,7 @@ module.exports = function (context) {
 
     filesToProcess.push({
       name: "ShareViewController.h (iOS Plugins)",
-      path: iosFolder(context) + projectName + "/Plugins/cordova-plugin-openwith/ShareViewController.h",
+      path: iosFolder(context) + projectName + "/Plugins/cordova-plugin-shared/ShareViewController.h",
       extension: '.h'
     });
 
@@ -391,7 +391,7 @@ module.exports = function (context) {
 
     // let myFile2 = {
     //   name: "ShareViewController.h",
-    //   path: iosFolder(context) + projectName + "/Plugins/cordova-plugin-openwith/ShareViewController.h",
+    //   path: iosFolder(context) + projectName + "/Plugins/cordova-plugin-shared/ShareViewController.h",
     //   extension: '.h'
     // }
     // // console.log(myFile2);

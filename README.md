@@ -1,4 +1,4 @@
-# cordova-plugin-openwith-url
+# cordova-plugin-shared
 
 > This plugin for [Apache Cordova](https://cordova.apache.org/) registers your app to handle certain types of files.
 
@@ -44,7 +44,7 @@ On the Cordova App side, the plugin checks listens for app start or resume event
 Here's the promised one liner:
 
 ```
-cordova plugin add cordova-plugin-openwith \
+cordova plugin add cordova-plugin-shared \
   --variable IOS_URL_SCHEME=cordovaopenwithdemo
 ```
 

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-const PLUGIN_ID = "cordova-plugin-openwith";
+const PLUGIN_ID = "cordova-plugin-shared";
 
 module.exports = function (context) {
     var child_process = context.requireCordovaModule('child_process');
