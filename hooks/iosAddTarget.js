@@ -56,8 +56,8 @@ function getAppId(context) {
   var data = fs.readFileSync(config_xml).toString();
   var etree = et.parse(data);
 
-  console.log("app id is:");
-  console.log(etree.getroot().attrib.id);
+  // console.log("app id is:");
+  // console.log(etree.getroot().attrib.id);
   return etree.getroot().attrib.id;
 }
 
@@ -294,8 +294,8 @@ function findPodLib(pbxProject, projectName) {
 
 function findFrameworkPhaseUUIDForTarget(target) {
   //let frameworkPhaseUUID;
-  console.log("target: buildPhases:");
-  console.log(target.buildPhases);
+  // console.log("target: buildPhases:");
+  // console.log(target.buildPhases);
   if (target.buildPhases && target.buildPhases.length >= 0) {
     for (let phase of target.buildPhases) {
       if (phase.comment == "Frameworks") {
