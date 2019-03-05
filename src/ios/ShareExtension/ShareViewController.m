@@ -265,6 +265,9 @@
 
     [self openURL:[NSURL URLWithString:url]];
 
+    //need to sleep to avoid thread lock. -tanli
+    usleep(1000000);
+
     // Shut down the extension
     [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 }
