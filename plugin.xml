@@ -29,7 +29,7 @@ SOFTWARE.
   id="cordova-plugin-shared"
   version="1.0.8"
 >
-  <name>OpenWith</name>
+  <name>Shared</name>
   <description>Cordova "Open With" plugin for Cordova</description>
   <engines>
     <engine name="cordova" version=">=6.0.0" />
