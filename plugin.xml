@@ -30,14 +30,14 @@ SOFTWARE.
   version="1.0.8"
 >
   <name>Shared</name>
-  <description>Cordova "Open With" plugin for Cordova</description>
+  <description>Cordova "Shared" plugin for Cordova</description>
   <engines>
     <engine name="cordova" version=">=6.0.0" />
   </engines>
   <repo>https://github.com/sandyclock/cordova-plugin-shared.git</repo>
   <issue>https://github.com/sandyclock/cordova-plugin-shared/issues</issue>
   <license>MIT</license>
-  <keywords>cordova,phonegap,openwith,ios,android</keywords>
+  <keywords>cordova,phonegap,shared,openwith,ios,android</keywords>
 
   <!-- ios -->
   <platform name="ios">
