@@ -34,6 +34,7 @@ const BUNDLE_SUFFIX = '.shareextension';
 
 var fs = require('fs');
 var path = require('path');
+// var projectFile = require('./projectFile');
 
 function redError(message) {
     return new Error('"' + PLUGIN_ID + '" \x1b[1m\x1b[31m' + message + '\x1b[0m');
@@ -312,6 +313,8 @@ console.log('Adding target "' + PLUGIN_ID + '/ShareExtension" to XCode project')
 module.exports = function (context) {
 
   var Q = context.requireCordovaModule('q');
+  console.log("cordova q:");
+  console.log(Q);
   var deferral = new Q.defer();
 
   if (context.opts.cordova.platforms.indexOf('ios') < 0) {
@@ -552,9 +555,34 @@ module.exports = function (context) {
       }
     }
 
+  /*
+   * IMPORTANT:
+   * We need to purge the project file cache stored by projectFile.js. Cordova-ios uses projectFile.js to read/write project file.
+   * However, projectFile.js caches the project file in memory, i.e., its global variable. Prepare.js in cordova-ios globally replace
+   * PRODUCT_BUNDLE_IDENTIFIER to the root project, which causes the extension's PRODUCT_BUNDLE_IDENTIFIER in the ios project file is also
+   * set to that of the root project. This plugin resets the PRODUCT_BUNDLE_IDENTIFIER to app_id+.shareextension. We need to purge
+   * projectFile.js so it will re-read the file between prepare.js and build.js, both of which are part of cordova-ios.
+   */
+  var projectFile = require('./../../../platforms/ios/cordova/lib/projectFile');
+
+  let iosFolderDir = path.join(context.opts.projectRoot, 'platforms/ios');
+
+  console.log("purge cached project file");
+  projectFile.purgeProjectFileCache(iosFolderDir);
+    // projectFile.purgeProjectFileCache(pbxProjectPath);
+
     // Write the modified project back to disc
+    // let mypath="/Users/tanli/private/projects/secucred/code/branches/devel_stripe_connect/mobile/client/platforms/ios/project-tan.pbxproj"
     fs.writeFileSync(pbxProjectPath, pbxProject.writeSync());
+    console.log("check now: change mode:");
+    // fs.chmodSync(pbxProjectPath, '400');
+    // pbxProject.writeSync();
+    // fs.writeFileSync("check_me.proj", pbxProject.writeSync());
+    // console.log(pbxProjectPath);
+    // // console.log(pbxProject.writeSync());
     console.log('Added ShareExtension to XCode project');
+    // console.log("iosAddTarget.js");
+
 
     deferral.resolve();
   });
