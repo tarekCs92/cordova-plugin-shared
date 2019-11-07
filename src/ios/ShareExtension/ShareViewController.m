@@ -143,8 +143,9 @@
             [invocation setTarget: responder];
             [invocation setSelector: selector];
             [invocation setArgument: &url atIndex: 2];
-            [invocation setArgument: &options atIndex:3];
-            [invocation setArgument: &completion atIndex: 4];
+            // no options and completion function. Remove unused code -tanli
+            // [invocation setArgument: &options atIndex:3]; 
+            // [invocation setArgument: &completion atIndex: 4];
             [invocation invoke];
             break;
         }
