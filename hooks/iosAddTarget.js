@@ -574,7 +574,7 @@ module.exports = function (context) {
     // Write the modified project back to disc
     // let mypath="/Users/tanli/private/projects/secucred/code/branches/devel_stripe_connect/mobile/client/platforms/ios/project-tan.pbxproj"
     fs.writeFileSync(pbxProjectPath, pbxProject.writeSync());
-    console.log("check now: change mode:");
+    // console.log("check now: change mode:");
     // fs.chmodSync(pbxProjectPath, '400');
     // pbxProject.writeSync();
     // fs.writeFileSync("check_me.proj", pbxProject.writeSync());
