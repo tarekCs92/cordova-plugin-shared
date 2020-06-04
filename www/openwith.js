@@ -136,7 +136,6 @@ function initOpenwithPlugin(root) {
 
     // registers a intent handler
     openwith.addHandler = function (callback) {
-        try {
 			alert("addHandler");
             log(DEBUG, 'addHandler()');
 			alert("DEBUG addHandler()");
@@ -153,10 +152,6 @@ function initOpenwithPlugin(root) {
 				alert("success call back ");
                 callback(intent);
             });
-        }
-        catch (err) {
-            alert(err.message);
-        }
     };
 
     openwith.numHandlers = function () {
