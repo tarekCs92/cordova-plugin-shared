@@ -1,4 +1,5 @@
 function initOpenwithPlugin(root) {
+function initOpenwithPlugin(root) {
     'use strict';
 
     // imports
@@ -134,25 +135,27 @@ function initOpenwithPlugin(root) {
     };
 
     // registers a intent handler
-    openwith.addHandler = function (callback, errorCallback) {
+    openwith.addHandler = function (callback) {
         try {
+			alert("addHandler");
             log(DEBUG, 'addHandler()');
+			alert("DEBUG addHandler()");
             if (typeof callback !== 'function') {
+				alert("invalid handler function");
                 throw new Error('invalid handler function');
             }
             if (findHandler(callback) >= 0) {
+				alert("handler already defined");
                 throw new Error('handler already defined');
             }
             handlers.push(callback);
             intents.forEach((intent) => {
+				alert("success call back ");
                 callback(intent);
             });
         }
         catch (err) {
             alert(err.message);
-            let loadError = function (err) {
-                errorCallback(err);
-            };
         }
     };
 
